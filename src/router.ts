@@ -6,6 +6,7 @@ import { listCategories } from "./app/useCases/categories/listCategories";
 import { createCategories } from "./app/useCases/categories/createCategories";
 import { listProducts } from "./app/useCases/products/listProducts";
 import { createProducts } from "./app/useCases/products/createProducts";
+import { listProductsByCategories } from "./app/useCases/categories/llistProductsByCategories";
 
 export const routes = Router();
 
@@ -33,9 +34,7 @@ routes.get("/products", listProducts);
 routes.post("/products", upload.single('image'), createProducts);
 
 // Get products by category
-routes.get("/categories/:categoryId/products", (req, res) => {
-  res.send('OK');
-});
+routes.get("/categories/:categoryId/products", listProductsByCategories);
 
 // List orders
 routes.get("/orders", (req, res) => {
