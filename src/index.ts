@@ -17,4 +17,4 @@ mongoose.connect('mongodb://localhost:27017')
       console.log(`servidor rodando em http://localhost:${port}`);
     });
   })
-  .catch(() => console.log('erro ao conectar ao banco de dados'));
+  .catch((error) => console.log('erro ao conectar ao banco de dados', error));

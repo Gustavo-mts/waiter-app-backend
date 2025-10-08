@@ -7,6 +7,10 @@ import { createCategories } from "./app/useCases/categories/createCategories";
 import { listProducts } from "./app/useCases/products/listProducts";
 import { createProducts } from "./app/useCases/products/createProducts";
 import { listProductsByCategories } from "./app/useCases/categories/llistProductsByCategories";
+import { listOrders } from "./app/useCases/orders/listOrders";
+import { createOrders } from "./app/useCases/orders/createOrders";
+import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
+import { cancelOrder } from "./app/useCases/orders/cancelOrder";
 
 export const routes = Router();
 
@@ -37,21 +41,13 @@ routes.post("/products", upload.single('image'), createProducts);
 routes.get("/categories/:categoryId/products", listProductsByCategories);
 
 // List orders
-routes.get("/orders", (req, res) => {
-  res.send('OK');
-});
+routes.get("/orders", listOrders);
 
 // Create order
-routes.post("/orders", (req, res) => {
-  res.send('OK');
-});
+routes.post("/orders", createOrders);
 
 // Change order status
-routes.patch("/orders/:orderId", (req, res) => {
-  res.send('OK');
-});
+routes.patch("/orders/:orderId", changeOrderStatus);
 
 // Delete order
-routes.delete("/orders/:orderId", (req, res) => {
-  res.send('OK');
-});
+routes.delete("/orders/:orderId", cancelOrder);
